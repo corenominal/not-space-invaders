@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<title>Not Space Invaders</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css">
+	<link href="css/vendor/animate.css" rel="stylesheet" type="text/css">
+	<link href="fonts/silkscreen/stylesheet.css" rel="stylesheet" type="text/css">
+	<link href="css/default.css" rel="stylesheet" type="text/css">
+
+	<script src="js/vendor/modernizr.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+	<div id="space"></div>
+	<div id="level">LEVEL: 1</div>
+	<div id="multiplier">X0</div>
+	<div id="score">00000</div>
+	<div id="intro">
+		
+		<div id="preview"></div>
+
+		<div data-difficulty="easy" class="startButton">
+			Easy
+		</div>
+		<div data-difficulty="medium" class="startButton">
+			Medium
+		</div>
+		<div data-difficulty="hard" class="startButton">
+			Hard
+		</div>
+	</div>
+
+	<div id="gameover" class="hidden">
+		<svg id="gameover-alien" width="100%" height="100%" viewBox="0 0 499 498" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path id="alien" d="M0,101l50.097,0l0,-53.107l51.903,0l0,-47.893l295,0l0,47.893l51.903,0l0,52.75l49.291,0l0,150l-48.194,0l0,247l-52,0l0,-247l-48,0l0,247l-52,0l0,-247l-98,0l0,247l-52,0l0,-247.143l-44.194,0l0,0.5l-0.806,0l0,246.643l-52,0l0,-246.643l-51,0l0,-150Zm300.097,49l0,45.143l94.29,0l0,-45.143l-94.29,0Zm-196.291,0l0,45l92.484,0l0,-45l-92.484,0Z" style="fill:#232729;"/></svg>
+		<span id="gameover-title">GAME OVER!</span>
+		<div id="reloadButton">Play Again?</div>
+	</div>
+
+	<script src="js/vendor/jquery.min.js" type="text/javascript"></script>
+	<script src="js/vendor/howler.min.js" type="text/javascript"></script>
+	<script src="js/index.js" type="text/javascript"></script>
+</body>
+</html>
