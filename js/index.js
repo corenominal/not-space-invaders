@@ -1,14 +1,5 @@
 $(document).on('ready',function()
 {
-// document.addEventListener("deviceready", onDeviceReady, false);
-// function onDeviceReady()
-// {
-
-	// Cross-browser support for requestAnimationFrame
-	//var requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame;
-	//var cancelAnimationFrame  = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame || window.mozCancelAnimationFrame;
-	
-
 	// Preview canvas
 	var w = window.innerWidth;
 	var h = window.innerHeight;
@@ -193,11 +184,6 @@ $(document).on('ready',function()
 		urls: ['./sfx/GameOver-Combined.mp3', './sfx/GameOver-Combined.ogg']
 	});
 
-	// var sfxGameOverRobot = new Howl(
-	// {
-	// 	urls: ['./sfx/GameOver-Robot.mp3', './sfx/GameOver-Robot.ogg']
-	// });
-
 	var sfxLaser = new Howl(
 	{
 		urls: ['./sfx/Laser.mp3', './sfx/Laser.ogg']
@@ -230,11 +216,8 @@ $(document).on('ready',function()
 
 	function doTimeBar()
 	{
-		//timerbar.style.width = (currentCountDown() / timeRemaining) * 100 + '%';
 		if(currentCountDown() <= 0)
 		{
-			//clearInterval(timer);
-			//outOfTime();
 			clearInterval(renderer);
 
 			// Remove event listens
@@ -243,13 +226,11 @@ $(document).on('ready',function()
 			canvas.removeEventListener('mousedown', clickywicky, false);
 			document.removeEventListener('keypress', listenKeys);
 
-			// cancelAnimationFrame(renderer)
 			// renderer = undefined;
 			if(!muted) sfxGameOver.play();
 
 			bassPlay = false;
-			// TODO: Game Over!
-			//alert('Out of time!');
+
 			var gameover = document.getElementById('gameover');
 			var gameover_alien = document.getElementById('gameover-alien');
 			var gameover_title = document.getElementById('gameover-title');
@@ -261,8 +242,6 @@ $(document).on('ready',function()
 
 			var reloadButton = document.getElementById('reloadButton');
 			reloadButton.addEventListener('click', reloadGame, false);
-
-			//location.reload();
 
 		}
 	}
@@ -489,12 +468,7 @@ $(document).on('ready',function()
 	{
 		if(blocks.length < 1 && motherships < 1)
 		{
-			//createBlocks();
-			//sfxRoundComplete.play();
 			clearInterval(renderer);
-			//cancelAnimationFrame(renderer)
-			//renderer = undefined;
-			//alert("Score: " + score + "\nLevel: " + level);
 			level++;
 			levelboard.innerHTML = 'LEVEL: ' + level;
 			levelboard.setAttribute('class', 'flash animated');
@@ -516,7 +490,6 @@ $(document).on('ready',function()
 				mothershipSpeed++;
 			}
 			createShips();
-			//levelboard.setAttribute('class', '');
 			main();
 		}
 	}
@@ -525,7 +498,6 @@ $(document).on('ready',function()
 	{
 		for	(index = 0; index < blocks.length; index++)
 		{
-			// Do movement
 
 			changed_direction = false;
 			r = Math.floor((Math.random() * 2) + 1);
@@ -857,12 +829,6 @@ $(document).on('ready',function()
 		}, 40); // 40
 	}
 
-	// function doRender()
-	// {
-	// 	render();
-	// 	renderer = requestAnimationFrame(doRender);
-	// }
-
 	function SpaceBass()
 	{
 		if(bassPlay)
@@ -923,4 +889,3 @@ $(document).on('ready',function()
 	}, 700);
 
 });
-//}
