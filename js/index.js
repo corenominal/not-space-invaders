@@ -420,7 +420,7 @@ $(document).on('ready',function()
 		if(!muted) sfxMotherShip.play();
 		x = 0;
 		y = 100;
-		y = Math.floor((Math.random() * ( h - 75 )) + 75 )
+		y = Math.floor((Math.random() * ( h - 175 )) + 75 )
 		motherships[motherships.length] = {'s':0,'x':x,'y':y};
 	}
 
