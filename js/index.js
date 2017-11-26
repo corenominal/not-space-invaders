@@ -23,7 +23,7 @@ $(document).on('ready',function()
 	var c = canvas.getContext('2d');
 	
 	var blocks = [];
-	var asteroids = [];
+	var spaceObjects = [];
 	var motherships = [];
 	var mothershipSpeed = 10;
 	var deads = [];
@@ -133,11 +133,11 @@ $(document).on('ready',function()
 	spriteMotherShip[1] = new Image();
 	spriteMotherShip[1].src = './img/mothership2.png';
 
-	var spriteAsteroids = [];
-	spriteAsteroids[0] = new Image();
-	spriteAsteroids[0].src = './img/asteroid1.png';
-	spriteAsteroids[1] = new Image();
-	spriteAsteroids[1].src = './img/asteroid2.png';
+	var spriteSpaceObjects = [];
+	spriteSpaceObjects[0] = new Image();
+	spriteSpaceObjects[0].src = './img/asteroid1.png';
+	spriteSpaceObjects[1] = new Image();
+	spriteSpaceObjects[1].src = './img/asteroid2.png';
 
 	// Audio
 	var explosions = [];
@@ -643,15 +643,15 @@ $(document).on('ready',function()
 		}
 	}
 
-	function createAsteroid()
+	function createSpaceObjects()
 	{
-		asteroids = [];
+		spaceObjects = [];
 		i = Math.floor((Math.random() * 5));
 		if(i < 2)
 		{
 			x = Math.floor((Math.random() * (w - 150)) - 60);
 			y = Math.floor((Math.random() * (h - 250)) + 60);
-			asteroids[asteroids.length] = {'s':i,'x':x,'y':y};
+			spaceObjects[spaceObjects.length] = {'s':i,'x':x,'y':y};
 		}
 	}
 
@@ -674,9 +674,9 @@ $(document).on('ready',function()
 		}
 
 		// render asteroid
-		for	(index = 0; index < asteroids.length; index++)
+		for	(index = 0; index < spaceObjects.length; index++)
 		{
-			c.drawImage(spriteAsteroids[asteroids[index].s], asteroids[index].x,asteroids[index].y);
+			c.drawImage(spriteSpaceObjects[spaceObjects[index].s], spaceObjects[index].x,spaceObjects[index].y);
 		}
 
 		// render ships
@@ -789,7 +789,7 @@ $(document).on('ready',function()
 		
 		createShips();
 		createStars();
-		createAsteroid();
+		createSpaceObjects();
 		if(!muted) sfxNextLevel.play();
 		
 		//TODO: keep playing with this		
