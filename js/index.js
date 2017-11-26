@@ -52,6 +52,7 @@ $(document).on('ready',function()
 	var muted = false;
 	var mouseposx = null;
 	var mouseposy = null;
+	var hitPaint = false;
 
 	//localStorage.clear();
 	
@@ -393,12 +394,14 @@ $(document).on('ready',function()
 			score_multiplier++;
 			updateScoreBoard();
 			updateScoreMultiplier();
+			hitPaint = true;
 		}
 		else
 		{
 			currentCountDown = createCountDown(currentCountDown() - 500);
 			score_multiplier = 0;
 			updateScoreMultiplier();
+			hitPaint = false;
 		}
 	}
 
@@ -664,7 +667,14 @@ $(document).on('ready',function()
 		moveShips();
 		moveMotherShip();
 
-		c.fillStyle = 'rgba(35, 39, 41, 0.6)'; // set alpha opacity so stars fade out
+		c.fillStyle = 'rgba(35, 39, 41, 0.6)';
+		
+		if( hitPaint )
+		{
+			c.fillStyle = 'rgba(255, 255, 255, 1)';
+			hitPaint = false;
+		}
+		
 		c.fillRect(0,0,w,h);
 
 		// render stars
