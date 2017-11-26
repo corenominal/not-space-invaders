@@ -42,6 +42,7 @@ $(document).on('ready',function()
 	var timeRemaining = 0;
 	var timerbar = document.getElementById('timer');
 	var sprite_frame = 0;
+	var sprite_animation_count = 0; // used for determining if alien sprite should flip to next frame
 	var laser = [];
 	var stars = [];
 	var bassTime = 700; //700
@@ -87,24 +88,30 @@ $(document).on('ready',function()
 		
 	}
 
-	//Sprites
-	var sprite = [];
-	sprite[0] = new Image();
-	sprite[0].src = './img/sprite1.png';
-	sprite[1] = new Image();
-	sprite[1].src = './img/sprite2.png';
-	sprite[2] = new Image();
-	sprite[2].src = './img/sprite3.png';
-	sprite[3] = new Image();
-	sprite[3].src = './img/sprite4.png';
-	sprite[4] = new Image();
-	sprite[4].src = './img/sprite5.png';
-	sprite[5] = new Image();
-	sprite[5].src = './img/sprite6.png';
-	sprite[6] = new Image();
-	sprite[6].src = './img/sprite7.png';
-	sprite[7] = new Image();
-	sprite[7].src = './img/sprite8.png';
+	// Alien sprites
+	var sprite1 = [];
+	sprite1[0] = new Image();
+	sprite1[0].src = './img/sprite1.png';
+	sprite1[1] = new Image();
+	sprite1[1].src = './img/sprite2.png';
+	
+	var sprite2 = [];
+	sprite2[0] = new Image();
+	sprite2[0].src = './img/sprite3.png';
+	sprite2[1] = new Image();
+	sprite2[1].src = './img/sprite4.png';
+	
+	var sprite3 = [];
+	sprite3[0] = new Image();
+	sprite3[0].src = './img/sprite5.png';
+	sprite3[1] = new Image();
+	sprite3[1].src = './img/sprite6.png';
+	
+	var sprite4 = [];
+	sprite4[0] = new Image();
+	sprite4[0].src = './img/sprite7.png';
+	sprite4[1] = new Image();
+	sprite4[1].src = './img/sprite8.png';
 
 	//Big Sprites
 	var spriteBig = [];
@@ -423,6 +430,7 @@ $(document).on('ready',function()
 	function createShips()
 	{
 		blocks = [];
+		var sprite_no = 1;
 		for(i = 0; i < ships; i++)
 		{
 			x = Math.floor((Math.random() * wb));
@@ -454,9 +462,12 @@ $(document).on('ready',function()
 			{
 				dy =- dy;
 			}
-			sprite_frame = Math.floor((Math.random() * sprite.length));
 
-			blocks[blocks.length] = {'spriteCount':0,'sprite':sprite_frame,'x':x,'y':y,'dx':dx,'dy':dy};
+			blocks[blocks.length] = {'sprite_no':sprite_no,'sprite_frame':0,'x':x,'y':y,'dx':dx,'dy':dy};
+
+			sprite_no++;
+
+			if( sprite_no > 4 ) sprite_no = 1;
 		}
 	}
 
@@ -534,46 +545,13 @@ $(document).on('ready',function()
 			blocks[index].y+=blocks[index].dy;
 
 			// Do ship sprite
-			// TODO: cleanup this mess
-			blocks[index].spriteCount++
-			if(blocks[index].spriteCount == 5)
-			{
-				blocks[index].spriteCount = 0
-			
-				if(blocks[index].sprite == 0)
-				{
-					blocks[index].sprite = 1;
-				}
-				else if(blocks[index].sprite == 1)
-				{
-					blocks[index].sprite = 0;
-				}
-				else if(blocks[index].sprite == 2)
-				{
-					blocks[index].sprite = 3;
-				}
-				else if(blocks[index].sprite == 3)
-				{
-					blocks[index].sprite = 2;
-				}
-				else if(blocks[index].sprite == 4)
-				{
-					blocks[index].sprite = 5;
-				}
-				else if(blocks[index].sprite == 5)
-				{
-					blocks[index].sprite = 4;
-				}
-				else if(blocks[index].sprite == 6)
-				{
-					blocks[index].sprite = 7;
-				}
-				else if(blocks[index].sprite == 7)
-				{
-					blocks[index].sprite = 6;
-				}
-			}
+			if( sprite_animation_count == 0 )
+				blocks[index].sprite_frame = ( blocks[index].sprite_frame == 0 ? 1 : 0 );
+
 		}
+
+		sprite_animation_count++;
+		if( sprite_animation_count > 5 ) sprite_animation_count = 0;
 
 	}
 
@@ -704,7 +682,21 @@ $(document).on('ready',function()
 		// render ships
 		for	(index = 0; index < blocks.length; index++)
 		{
-			c.drawImage(sprite[blocks[index].sprite], blocks[index].x,blocks[index].y,shipSize,shipSize);
+			switch( blocks[index].sprite_no)
+			{
+		    case 1:
+		        c.drawImage(sprite1[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        break;
+		    case 2:
+		        c.drawImage(sprite2[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        break;
+		    case 3:
+		        c.drawImage(sprite3[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        break;
+		    default:
+		        c.drawImage(sprite4[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+			}
+				
 		}
 
 		// render motherships
