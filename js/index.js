@@ -138,6 +138,10 @@ $(document).on('ready',function()
 	spriteSpaceObjects[0].src = './img/asteroid1.png';
 	spriteSpaceObjects[1] = new Image();
 	spriteSpaceObjects[1].src = './img/asteroid2.png';
+	spriteSpaceObjects[2] = new Image();
+	spriteSpaceObjects[2].src = './img/satellite1.png';
+	spriteSpaceObjects[3] = new Image();
+	spriteSpaceObjects[3].src = './img/satellite2.png';
 
 	// Audio
 	var explosions = [];
@@ -646,13 +650,11 @@ $(document).on('ready',function()
 	function createSpaceObjects()
 	{
 		spaceObjects = [];
-		i = Math.floor((Math.random() * 5));
-		if(i < 2)
-		{
-			x = Math.floor((Math.random() * (w - 150)) - 60);
-			y = Math.floor((Math.random() * (h - 250)) + 60);
-			spaceObjects[spaceObjects.length] = {'s':i,'x':x,'y':y};
-		}
+		i = Math.floor((Math.random() * spriteSpaceObjects.length));
+		
+		x = Math.floor((Math.random() * (w - 150)) - 60);
+		y = Math.floor((Math.random() * (h - 250)) + 60);
+		spaceObjects[spaceObjects.length] = {'s':i,'x':x,'y':y};
 	}
 
 	var render = function()
