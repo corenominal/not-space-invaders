@@ -37,8 +37,8 @@ $(document).on('ready',function()
 	var level = 1;
 	var ships = 1; // number of shipsat start
 	var shipSize = 60;
-	var time = 1000;
-	var timeMod = 0;
+	var time = 0; // starting time
+	var timeDifficulty = 0; // time per ship
 	var timeRemaining = 0;
 	var timerbar = document.getElementById('timer');
 	var sprite_frame = 0;
@@ -378,7 +378,7 @@ $(document).on('ready',function()
 
 		if(hit)
 		{
-			currentCountDown = createCountDown(currentCountDown() + 1000);
+			currentCountDown = createCountDown(currentCountDown() + 500);
 			score_multiplier++;
 			updateScoreBoard();
 			updateScoreMultiplier();
@@ -718,7 +718,8 @@ $(document).on('ready',function()
 		{
 			  c.strokeStyle = 'rgba(255,255,255, 1)';
 			  c.lineWidth = 4;
-			  //Left Laser. PEW!
+			  
+			  // left Laser. PEW! PEW!
 			  c.beginPath();
 		      c.moveTo(0, ((h / 2) - 2));
 		      c.lineTo(laser[0].x, laser[0].y);
@@ -727,7 +728,8 @@ $(document).on('ready',function()
 		      c.moveTo(0, ((h / 2) + 2));
 		      c.lineTo(laser[0].x, laser[0].y);
 		      c.stroke();
-		      //Right Laser. PEW!
+		      
+		      // right Laser. PEW! PEW!
 		      c.beginPath();
 		      c.moveTo(w, ((h / 2) - 2));
 		      c.lineTo(laser[0].x, laser[0].y);
@@ -764,7 +766,6 @@ $(document).on('ready',function()
 		perc = (perc / 100) * h;
 		c.strokeStyle = 'rgba(255,255,255, 1)';
 		c.lineWidth = 30;
-		//Left Laser. PEW!
 		c.beginPath();
 		c.moveTo(0, h);
 		c.lineTo(0, (h - perc));
@@ -798,20 +799,14 @@ $(document).on('ready',function()
 		createStars();
 		createAsteroid();
 		if(!muted) sfxNextLevel.play();
-		//TODO: fix this,  levels too long when there are lots of ships
-		timeRemaining = (time * ships) - (timeMod * ships);
 		
-		// Not like this, needs to have a better formula
+		//TODO: keep playing with this		
 		if( ships > 1)
-			timeRemaining = (time * (ships/2)) - (timeMod * ships);
+			time = timeDifficulty;
 
-		if( ships > 5)
-			timeRemaining = (time * (ships/3)) - (timeMod * ships);
-
-		if( ships > 10)
-			timeRemaining = (time * (ships/5)) - (timeMod * ships);
+		timeRemaining = ( time * ships );
 		
-		timeMod += 100;
+		console.log( timeRemaining );
 		currentCountDown = createCountDown(timeRemaining);
 		
 		//doRender();
@@ -851,16 +846,19 @@ $(document).on('ready',function()
         {
         	case 'easy':
         		time = 5000;
+        		timeDifficulty = 1500;
         		mothershipSpeed = 5;
         		shipSize = 50;
         		break;
         	case 'medium':
         		time = 3000;
+        		timeDifficulty = 1200;
         		mothershipSpeed = 10;
         		shipSize = 40;
         		break;
         	default:
         		time = 2000;
+        		timeDifficulty = 1000;
         		mothershipSpeed = 12;
         		shipSize = 30
         		break;
