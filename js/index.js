@@ -48,7 +48,7 @@ $(document).on('ready',function()
 	var bassTime = 700; //700
 	var bassBeat = 3;
 	var bassPlay = true;
-	var bigSprite = 2;
+	var bigAlienSpriteCount = 2;
 	var muted = false;
 	var mouseposx = null;
 	var mouseposy = null;
@@ -89,40 +89,40 @@ $(document).on('ready',function()
 	}
 
 	// Alien sprites
-	var sprite1 = [];
-	sprite1[0] = new Image();
-	sprite1[0].src = './img/sprite1.png';
-	sprite1[1] = new Image();
-	sprite1[1].src = './img/sprite2.png';
+	var spriteAlien1 = [];
+	spriteAlien1[0] = new Image();
+	spriteAlien1[0].src = './img/sprite1.png';
+	spriteAlien1[1] = new Image();
+	spriteAlien1[1].src = './img/sprite2.png';
 	
-	var sprite2 = [];
-	sprite2[0] = new Image();
-	sprite2[0].src = './img/sprite3.png';
-	sprite2[1] = new Image();
-	sprite2[1].src = './img/sprite4.png';
+	var spriteAlien2 = [];
+	spriteAlien2[0] = new Image();
+	spriteAlien2[0].src = './img/sprite3.png';
+	spriteAlien2[1] = new Image();
+	spriteAlien2[1].src = './img/sprite4.png';
 	
-	var sprite3 = [];
-	sprite3[0] = new Image();
-	sprite3[0].src = './img/sprite5.png';
-	sprite3[1] = new Image();
-	sprite3[1].src = './img/sprite6.png';
+	var spriteAlien3 = [];
+	spriteAlien3[0] = new Image();
+	spriteAlien3[0].src = './img/sprite5.png';
+	spriteAlien3[1] = new Image();
+	spriteAlien3[1].src = './img/sprite6.png';
 	
-	var sprite4 = [];
-	sprite4[0] = new Image();
-	sprite4[0].src = './img/sprite7.png';
-	sprite4[1] = new Image();
-	sprite4[1].src = './img/sprite8.png';
+	var spriteAlien4 = [];
+	spriteAlien4[0] = new Image();
+	spriteAlien4[0].src = './img/sprite7.png';
+	spriteAlien4[1] = new Image();
+	spriteAlien4[1].src = './img/sprite8.png';
 
 	//Big Sprites
-	var spriteBig = [];
-	spriteBig[0] = new Image();
-	spriteBig[0].src = './img/bigSprite1.png';
-	spriteBig[1] = new Image();
-	spriteBig[1].src = './img/bigSprite2.png';
-	spriteBig[2] = new Image();
-	spriteBig[2].src = './img/bigSprite3.png';
-	spriteBig[3] = new Image();
-	spriteBig[3].src = './img/bigSprite4.png';
+	var spriteBigAlien = [];
+	spriteBigAlien[0] = new Image();
+	spriteBigAlien[0].src = './img/bigSprite1.png';
+	spriteBigAlien[1] = new Image();
+	spriteBigAlien[1].src = './img/bigSprite2.png';
+	spriteBigAlien[2] = new Image();
+	spriteBigAlien[2].src = './img/bigSprite3.png';
+	spriteBigAlien[3] = new Image();
+	spriteBigAlien[3].src = './img/bigSprite4.png';
 
 	spriteDead = new Image();
 	spriteDead.src = './img/spriteDead.png';
@@ -685,16 +685,16 @@ $(document).on('ready',function()
 			switch( blocks[index].sprite_no)
 			{
 		    case 1:
-		        c.drawImage(sprite1[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        c.drawImage(spriteAlien1[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
 		        break;
 		    case 2:
-		        c.drawImage(sprite2[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        c.drawImage(spriteAlien2[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
 		        break;
 		    case 3:
-		        c.drawImage(sprite3[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        c.drawImage(spriteAlien3[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
 		        break;
 		    default:
-		        c.drawImage(sprite4[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
+		        c.drawImage(spriteAlien4[blocks[index].sprite_frame], blocks[index].x,blocks[index].y,shipSize,shipSize);
 			}
 				
 		}
@@ -774,12 +774,12 @@ $(document).on('ready',function()
 		pc.fillRect(0,0,w,h);
 		pc.w = previewCanvas.width;
 		pc.h = previewCanvas.height;
-		bigSprite++;
-		if(bigSprite == 4)
+		bigAlienSpriteCount++;
+		if(bigAlienSpriteCount == 4)
 		{
-			bigSprite = 0;
+			bigAlienSpriteCount = 0;
 		}
-		pc.drawImage(spriteBig[bigSprite], (pc.w / 2) - 75,(pc.h / 2) - 75);
+		pc.drawImage(spriteBigAlien[bigAlienSpriteCount], (pc.w / 2) - 75,(pc.h / 2) - 75);
 	}
 
 	
