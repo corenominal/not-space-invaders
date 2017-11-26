@@ -273,8 +273,6 @@ $(document).on('ready',function()
 	{
 	    mouseposx = e.pageX;
 	    mouseposy = e.pageY;
-	    console.clear();
-	    console.log( mouseposx + ':' + mouseposy );
 	}
 
 	function getMouseX()
@@ -289,7 +287,6 @@ $(document).on('ready',function()
 
 	function clickywicky(e)
 	{
-		console.log( mouseposx );
 		if( e.pageX == undefined || e.pageX == 0 )
 		{
 			canvas_x = getMouseX();
@@ -416,7 +413,6 @@ $(document).on('ready',function()
 
 	function createMotherShip()
 	{
-		console.log('MOFO GOD SHIP');
 		if(!muted) sfxMotherShip.play();
 		x = 0;
 		y = 100;
@@ -537,7 +533,8 @@ $(document).on('ready',function()
 			blocks[index].x+=blocks[index].dx; 
 			blocks[index].y+=blocks[index].dy;
 
-			// Do sprite
+			// Do ship sprite
+			// TODO: cleanup this mess
 			blocks[index].spriteCount++
 			if(blocks[index].spriteCount == 5)
 			{
@@ -584,20 +581,17 @@ $(document).on('ready',function()
 	{
 		for	(index = 0; index < motherships.length; index++)
 		{
+			// Move along x axis
 			motherships[index].x += mothershipSpeed;
-			if(motherships[index].s == 0)
-			{
-				motherships[index].s = 1;
-			}
-			else
-			{
-				motherships[index].s = 0;
-			}
+
+			// Toggle sprite
+			motherships[index].s = ( motherships[index].s == 0 ? 1 : 0 );
+
+			// Test if moved off canvas
 			if(motherships[index].x > w)
 			{
 				motherships.splice(index, 1);
 				sfxMotherShip.stop();
-				console.log('mothership removed!');
 			}
 		}
 	}
@@ -818,7 +812,6 @@ $(document).on('ready',function()
 			timeRemaining = (time * (ships/5)) - (timeMod * ships);
 		
 		timeMod += 100;
-		console.log(timeRemaining);
 		currentCountDown = createCountDown(timeRemaining);
 		
 		//doRender();
