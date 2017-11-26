@@ -852,13 +852,13 @@ $(document).on('ready',function()
         		break;
         	case 'medium':
         		time = 3000;
-        		timeDifficulty = 1200;
+        		timeDifficulty = 1500;
         		mothershipSpeed = 10;
         		shipSize = 40;
         		break;
         	default:
         		time = 2000;
-        		timeDifficulty = 1000;
+        		timeDifficulty = 1500;
         		mothershipSpeed = 12;
         		shipSize = 30
         		break;
