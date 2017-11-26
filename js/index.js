@@ -671,7 +671,7 @@ $(document).on('ready',function()
 		
 		if( hitPaint )
 		{
-			c.fillStyle = 'rgba(255, 255, 255, 1)';
+			c.fillStyle = 'rgba(255, 255, 255, 0.5)';
 			hitPaint = false;
 		}
 		
