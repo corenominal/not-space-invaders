@@ -8,6 +8,7 @@ A HTML/JavaScript game that is not Space Invaders. Shoot the alien spaceships be
 - Epic sfx
 - Random bonus motherships
 - Score multipliers awarded for accuracy
+- Time reductions for inaccuracy
 
 
 ## Demo
