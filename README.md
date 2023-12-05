@@ -10,10 +10,9 @@ A HTML/JavaScript game that is not Space Invaders. Shoot the alien spaceships be
 - Score multipliers awarded for accuracy
 - Time reductions for inaccuracy
 
-
 ## Demo
 
-![Pew! Pew!](https://assets.corenominal.com/img/not-space-invaders.gif)
+![Pew! Pew!](https://philipnewborough.co.uk/assets/img/shared/not-space-invaders.gif)
 
 [Play the game](https://corenominal.github.io/not-space-invaders/)
 
